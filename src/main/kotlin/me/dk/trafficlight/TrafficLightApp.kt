@@ -5,7 +5,6 @@ import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 import tornadofx.*
 
-
 class TrafficLight: View() {
     private fun VBox.trafficLightCircle(color: Color) {
         circle {
@@ -17,13 +16,23 @@ class TrafficLight: View() {
         }
     }
 
-    override val root = vbox {
-        padding = Insets(20.0)
+    override val root =
+        vbox {
+            padding = Insets(40.0)
+            vbox {
+                style {
+                    backgroundColor += Color.GRAY
+                    borderColor += box(Color.BLACK)
+                    borderWidth += box(4.px)
+                }
 
-        trafficLightCircle(Color.RED)
-        trafficLightCircle(Color.YELLOW)
-        trafficLightCircle(Color.GREEN)
-    }
+                padding = Insets(20.0)
+
+                trafficLightCircle(Color.RED)
+                trafficLightCircle(Color.YELLOW)
+                trafficLightCircle(Color.GREEN)
+            }
+        }
 }
 
 class TrafficLightApp: App(TrafficLight::class)
